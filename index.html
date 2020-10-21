@@ -56,6 +56,7 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 <BR>
 
 <h2><a name = first>1.はじめに</a></h2>
+<p>本ドキュメントはMIRS2004のソフトウェアにあいての基本設計である。</p>
 
 <h2><a name = function>2．機能概要</a></h2>
 機能概要をtable.1に示す。
@@ -101,6 +102,24 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 <br>
 
 <h2><a name = design>3．機能設計</a></h2>
+<p>RaspberryPiに必要な機能</p>
+<ul>
+	<li>Arduinoとの通信機能</li>
+	<li>画像認識を行う機能</li>
+	<li>超音波センサを制御する機能</li>
+	<li>GPIOピンを処理する機能</li>
+	<li>ディスプレイ</li>
+</ul>
+<p>Arduinoに必要な機能</p>
+<ul>
+	<li>RaspberryPiとの通信の信号を処理する機能</li>
+	<li>ロータリーエンコーダの信号を処理する機能</li>
+	<li>モータの制御を行う機能</li>
+	<li>緊急停止機能の信号を処理する機能</li>
+	<li>IOピンの管理、信号処理する機能</li>
+
+</il>
+<br>
 
 <h2><a name = module>4．各モジュール設計</a></h2>
 
