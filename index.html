@@ -153,7 +153,7 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 			</tr>
 			<tr>
 				<td>request</td>
-				<td>Arduinoに指令をだす</td>
+				<td>Arduinoに指令を出す</td>
 			</tr>
 			<tr>
 				<td>uss</td>
@@ -204,49 +204,40 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 				<th>概要</th>
 			</tr>
 			<tr>
-				<td>pilot</td>
-				<td>全体的な操作</td>
+				<td>slave</td>
+				<td>各種の処理の実行を行う</td>
 			</tr>
 			<tr>
-				<td>request</td>
-				<td>Arduinoに指令をだす</td>
+				<td>run_ctrl</td>
+				<td>走行制御を行う</td>
 			</tr>
 			<tr>
-				<td>uss</td>
-				<td>超音波センサを読み取る</td>
+				<td>vel_count</td>
+				<td>走行制御を行う</td>
 			</tr>
 			<tr>
-				<td>position</td>
-				<td>自己位置の処理</td>
+				<td>moter</td>
+				<td>モータの制御を行う</td>
 			</tr>
 			<tr>
-				<td>get_image</td>
-				<td>画像を撮影する</td>
+				<td>distance</td>
+				<td>走行距離の計測を行う</td>
 			</tr>
 			<tr>
-				<td>arduino</td>
-				<td>Arduinoにシリアル通信を行う</td>
+				<td>encoder</td>
+				<td>エンコーダの読み取りを行う</td>
 			</tr>
 			<tr>
-				<td>*display</td>
-				<td>ディスプレイに表示を行う</td>
+				<td>stop</td>
+        <td>緊急停止用の制御を行う</td>
 			</tr>
 			<tr>
-				<td>*app_ctrl</td>
-				<td>アプリケーションとの通信を元に制御する</td>
+				<td>raspi</td>
+				<td>Raspberry Piとの通信を行う</td>
 			</tr>
 			<tr>
-				<td>*app_ball</td>
-				<td>アプリケーションとの通信により拾う球種を変更する</td>
-			</tr>
-			<tr>
-				<td>*camera_ball</td>
-				<td>カメラによるボールの画像認識を行う</td>
-			</tr>
-			<tr>
-				<td>*camera_corn</td>
-				<td>カメラによるカラーコーンの画像認識を行う</td>
-			</tr>
+				<td>*motor_conveyor</td>
+				<td>コンベアを動かすためのモーターの制御を行う</td>
 		</tbody>
 	</table>
 	</center>
