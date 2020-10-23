@@ -37,8 +37,8 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 
 <tr>
 <td>A01</td>
-<td>2020.10.21</td>
-<td>佐藤恭理</td>
+<td>2020.10.23</td>
+<td>佐藤恭理､中村伸哉</td>
 <td></td>
 <td>初版</td>
 </tr>
@@ -56,7 +56,7 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 <BR>
 
 <h2><a name = first>1.はじめに</a></h2>
-<p>本ドキュメントはMIRS2004のソフトウェアにあいての基本設計である。</p>
+<p>本ドキュメントはMIRS2004のソフトウェアにおいての基本設計である。</p>
 
 <h2><a name = function>2．機能概要</a></h2>
 機能概要をtab.1に示す。
@@ -73,8 +73,8 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 		<tr>
 			<td>座標認識機能</td>
 			<td>MIRS本体がコート外に出ないようにするため</td>
-			<td>ボール回収を指定する範囲の四隅にカラーコーンを設置してもらい、カメラを
-				用いてそのカラーコーンを検知して、ロータリーエンコーダで測定、そこから現在地を把握</td>
+			<td>ボール回収を指定する範囲にカラーコーンを設置してもらい、カメラを
+				用いてそのカラーコーンを検知して、ロータリーエンコーダで測定、その範囲外に出ないようにする</td>
 		</tr>
 		<tr>
 			<td>緊急停止機能</td>
@@ -101,6 +101,11 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 			<td>MIRSにつける顔の表情を豊かにため</td>
 			<td>RaspberryPiにつなげて、直接表示させる</td>
 		</tr>
+		<tr>
+			<td>アプリケーション連携機能</td>
+			<td>ユーザにMIRSの動作開始や停止といった最低限の制御を行わせることにより、ユーザ体験を向上させるため</td>
+			<td>アプリケーション開発をする</td>
+		</tr>
 	</tbody>
 </table>
 </center>
@@ -121,20 +126,21 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 	<li>モータの制御を行う機能</li>
 	<li>緊急停止機能の信号を処理する機能</li>
 
-</il>
+</ul>
 <br>
 
 <h2><a name = module>4．各モジュール設計</a></h2>
-	<p>各モジュールについてfig.1,fig.2に示す。また、各モジュールの説明をtab.2に示す。</p>
+	<p>各モジュールについてfig.1,fig.2に示す。また、各モジュールの説明をtab.2,tab.3に示す。<br>
+		また、tab.2,tab.3においてモジュール名に｢*｣のついた項目は新規追加するモジュールである。</p>
 
 	<center>
-		<img src="module_ras.jpg" title="RaspberryPi モジュール構成図" width="1000" height="auto">
+		<img src="module_ras.png" title="RaspberryPi モジュール構成図" width="1000" height="auto">
 			<p>fig.1 RaspberryPi モジュール構成図</p>
 		</center>
 	<br><br>
 
 	<center>
-		<img src="module_aru.jpg" title="Arduino モジュール構成図" width="1000" height="auto">
+		<img src="module_ard.png" title="Arduino モジュール構成図" width="1000" height="auto">
 			<p>fig.2 Arduino モジュール構成図</p>
 		</center>
 	<br><br>
@@ -241,10 +247,11 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 		</tbody>
 	</table>
 	</center>
+	<br>
 <h2><a name = link>5.各パートへのリンク</a></h2>
-
-
-
+<a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004/dsgn/num0004a/index.html" target="_self">MIRS2004 基本設計書(全体)</a><br>
+<a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004/mech/num0001a/index.html" target="_self">MIRS2004 基本設計書(メカニクス)</a><br>
+<a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004/elec/num0001a/index.html" target="_self">MIRS2004 基本設計書(エレクトロニクス)</a><br>
 <BR>
 <hr>
 <BR>
