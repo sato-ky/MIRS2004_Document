@@ -59,10 +59,10 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 <p>本ドキュメントはMIRS2004のソフトウェアにあいての基本設計である。</p>
 
 <h2><a name = function>2．機能概要</a></h2>
-機能概要をtable.1に示す。
+機能概要をtab.1に示す。
 
 <center>
-	table.1 機能概要
+	tab.1 機能概要
 <table class="table010">
 	<tbody>
 		<tr>
@@ -96,6 +96,11 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 			<td>人といった障害物に衝突する事故を防ぐため</td>
 			<td>超音波センサを用いて、人などの大きな物体を衝突前に検知し、停止する</td>
 		</tr>
+		<tr>
+			<td>ディスプレイ表示機能</td>
+			<td>MIRSにつける顔の表情を豊かにため</td>
+			<td>RaspberryPiにつなげて、直接表示させる</td>
+		</tr>
 	</tbody>
 </table>
 </center>
@@ -107,8 +112,7 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 	<li>Arduinoとの通信機能</li>
 	<li>画像認識を行う機能</li>
 	<li>超音波センサを制御する機能</li>
-	<li>GPIOピンを処理する機能</li>
-	<li>ディスプレイを制御する機能</li>
+	<li>ディスプレイに表示する機能</li>
 </ul>
 <p>Arduinoに必要な機能</p>
 <ul>
@@ -116,14 +120,136 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 	<li>ロータリーエンコーダの信号を処理する機能</li>
 	<li>モータの制御を行う機能</li>
 	<li>緊急停止機能の信号を処理する機能</li>
-	<li>IOピンの管理、信号処理する機能</li>
 
 </il>
 <br>
 
 <h2><a name = module>4．各モジュール設計</a></h2>
+	<p>各モジュールについてfig.1,fig.2に示す。また、各モジュールの説明をtab.2に示す。</p>
 
+	<center>
+		<img src="module_ras.jpg" title="RaspberryPi モジュール構成図" width="1000" height="auto">
+			<p>fig.1 RaspberryPi モジュール構成図</p>
+		</center>
+	<br><br>
 
+	<center>
+		<img src="module_aru.jpg" title="Arduino モジュール構成図" width="1000" height="auto">
+			<p>fig.2 Arduino モジュール構成図</p>
+		</center>
+	<br><br>
+
+	<center>
+		tab.2 RaspberryPi モジュール一覧
+	<table class="table010">
+		<tbody>
+			<tr>
+				<th>モジュール名</th>
+				<th>概要</th>
+			</tr>
+			<tr>
+				<td>pilot</td>
+				<td>全体的な操作</td>
+			</tr>
+			<tr>
+				<td>request</td>
+				<td>Arduinoに指令をだす</td>
+			</tr>
+			<tr>
+				<td>uss</td>
+				<td>超音波センサを読み取る</td>
+			</tr>
+			<tr>
+				<td>position</td>
+				<td>自己位置の処理</td>
+			</tr>
+			<tr>
+				<td>get_image</td>
+				<td>画像を撮影する</td>
+			</tr>
+			<tr>
+				<td>arduino</td>
+				<td>Arduinoにシリアル通信を行う</td>
+			</tr>
+			<tr>
+				<td>*display</td>
+				<td>ディスプレイに表示を行う</td>
+			</tr>
+			<tr>
+				<td>*app_ctrl</td>
+				<td>アプリケーションとの通信を元に制御する</td>
+			</tr>
+			<tr>
+				<td>*app_ball</td>
+				<td>アプリケーションとの通信により拾う球種を変更する</td>
+			</tr>
+			<tr>
+				<td>*camera_ball</td>
+				<td>カメラによるボールの画像認識を行う</td>
+			</tr>
+			<tr>
+				<td>*camera_corn</td>
+				<td>カメラによるカラーコーンの画像認識を行う</td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
+
+	<center>
+		tab.3 Arduino モジュール一覧
+	<table class="table010">
+		<tbody>
+			<tr>
+				<th>モジュール名</th>
+				<th>概要</th>
+			</tr>
+			<tr>
+				<td>pilot</td>
+				<td>全体的な操作</td>
+			</tr>
+			<tr>
+				<td>request</td>
+				<td>Arduinoに指令をだす</td>
+			</tr>
+			<tr>
+				<td>uss</td>
+				<td>超音波センサを読み取る</td>
+			</tr>
+			<tr>
+				<td>position</td>
+				<td>自己位置の処理</td>
+			</tr>
+			<tr>
+				<td>get_image</td>
+				<td>画像を撮影する</td>
+			</tr>
+			<tr>
+				<td>arduino</td>
+				<td>Arduinoにシリアル通信を行う</td>
+			</tr>
+			<tr>
+				<td>*display</td>
+				<td>ディスプレイに表示を行う</td>
+			</tr>
+			<tr>
+				<td>*app_ctrl</td>
+				<td>アプリケーションとの通信を元に制御する</td>
+			</tr>
+			<tr>
+				<td>*app_ball</td>
+				<td>アプリケーションとの通信により拾う球種を変更する</td>
+			</tr>
+			<tr>
+				<td>*camera_ball</td>
+				<td>カメラによるボールの画像認識を行う</td>
+			</tr>
+			<tr>
+				<td>*camera_corn</td>
+				<td>カメラによるカラーコーンの画像認識を行う</td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
 <h2><a name = link>5.各パートへのリンク</a></h2>
 
 
