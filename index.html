@@ -37,7 +37,7 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 
 <tr>
 <td>A01</td>
-<td>2020.10.23</td>
+<td>2020.10.28</td>
 <td>佐藤恭理､中村伸哉</td>
 <td></td>
 <td>初版</td>
@@ -73,18 +73,15 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 		<tr>
 			<td>座標認識機能</td>
 			<td>MIRS本体がコート外に出ないようにするため</td>
-			<td>ボール回収を指定する範囲にカラーコーンを設置してもらい、カメラを
-				用いてそのカラーコーンを検知して、ロータリーエンコーダで測定、その範囲外に出ないようにする</td>
-		</tr>
-		<tr>
-			<td>緊急停止機能</td>
-			<td>非常事態のときにすぐに動作を停止できるようにするため</td>
-			<td>電源ボードから緊急停止ボタン用の配線を行い、ボタンを押すだけでタイヤやコンベアのモータを止めるようにする</td>
+			<td>1.ユーザがコートの端にカラーコーン設置する<BR>
+					2.カメラを用いてMIRSがカラーコーンを画像認識する<BR>
+					3.ロータリエンコーダでカラーコーンまでの距離を計測<BR>
+					4.カラーコーンまでの距離から範囲を設定</td>
 		</tr>
 		<tr>
 			<td>ボール検知機能</td>
 			<td>効率的なボール回収を実現するため</td>
-			<td>カメラ、機械学習を用いてボールを記憶させる</td>
+			<td>カメラを用いてボールを画像認識する</td>
 		</tr>
 		<tr>
 			<td>ベルトコンベア機能</td>
@@ -98,8 +95,8 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 		</tr>
 		<tr>
 			<td>ディスプレイ表示機能</td>
-			<td>MIRSにつける顔の表情を豊かにため</td>
-			<td>RaspberryPiにつなげて、直接表示させる</td>
+			<td>ディスプレイをつけ、MIRSに表情を表示させるため</td>
+			<td>RaspberryPiにつなげて、電源投入時から表示させる</td>
 		</tr>
 		<tr>
 			<td>アプリケーション連携機能</td>
@@ -125,8 +122,6 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 	<li>RaspberryPiとの通信の信号を処理する機能</li>
 	<li>ロータリーエンコーダの信号を処理する機能</li>
 	<li>モータの制御を行う機能</li>
-	<li>緊急停止機能の信号を処理する機能</li>
-
 </ul>
 <br>
 
@@ -237,10 +232,6 @@ setInterval("elm=document.getElementById('izutani');if(elm.style.visibility=='vi
 			<tr>
 				<td>encoder</td>
 				<td>エンコーダの読み取りを行う</td>
-			</tr>
-			<tr>
-				<td>stop</td>
-        <td>緊急停止用の制御を行う</td>
 			</tr>
 			<tr>
 				<td>raspi</td>
