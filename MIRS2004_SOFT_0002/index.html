@@ -37,7 +37,7 @@
 
       <tr>
         <td>A01</td>
-        <td>2020.11.11</td>
+        <td>2021.01.27</td>
         <td>佐藤恭理､中村伸哉</td>
         <td></td>
         <td>初版</td>
@@ -46,8 +46,8 @@
 
     <h3>目次</h3>
     <a href = "#first">1.はじめに</a><br>
-    <a href = "#">2.</a><br>
-    <a href = "#">3.</a><br>
+    <a href = "#function">2.基本機能</a><br>
+    <a href = "#module">3.モジュール構成</a><br>
     <a href = "#">4.</a><br>
     <a href = "#">5.各パートへのリンク</a><br>
 
@@ -58,15 +58,196 @@
     <h2><a name = first>1.はじめに</a></h2>
     <p>本ドキュメントはMIRS2004の詳細設計書、ソフトウェアについてのドキュメントである。</p>
     <BR>
-    <h2><a name=second>2.モジュール構成とかそういうの</a></h2>
-    <!--　書いてね-->
+
+    <h2><a name = function>2.基本機能</a></h2>
+    <p>基本機能をtab.1に示す。</p>
+    <center>
+      <p>tab.1 基本機能</p>
+      <table class="table010">
+        <tr>
+          <th>機能</th>
+          <th>目的</th>
+          <th>方法</th>
+          <th>記述言語</th>
+        </tr>
+
+        <tr>
+          <td>ボール検知機能</td>
+          <td>ボール回収を実現するため</td>
+          <td>カメラを用いてボールを画像認識する</td>
+          <td>Python</td>
+        </tr><tr>
+          <td>ベルトコンベア機能</td>
+          <td>ボールを回収、格納するため</td>
+          <td>モータを用いて軸を回転させ、ベルトコンベアを起動させる</td>
+          <td>C言語</td>
+        </tr>
+        <tr>
+          <td>衝突回避機能</td>
+          <td>人といった障害物に衝突する事故を防ぐため</td>
+          <td>超音波センサを用いて、人などの大きな物体を衝突前に検知し、後退する</td>
+          <td>C言語</td>
+        </tr>
+        <tr>
+          <td>ディスプレイ表示機能</td>
+          <td>ディスプレイをつけ、MIRSに表情を表示させるため</td>
+          <td>RaspberryPiにつなげて、電源投入時から表示させる</td>
+          <td>Python</td>
+        </tr>
+        <tr>
+          <td>アプリケーション連携機能</td>
+          <td>ユーザにMIRSの動作開始や停止といった最低限の制御を行わせることにより、ユーザ体験を向上させるため</td>
+          <td>アプリケーション開発をする</td>
+          <td></td>
+        </tr>
+      </table>
+    </center>
     <BR>
+
+    <h2><a name=module>3.モジュール構成</a></h2>
+      <p>各機能実現のためのモジュール構成を以下に示す。</p>
+      <h3>3.1Arduinoモジュール構成</h3>
+      <p>Arduinoのモジュール構成図をfig.1に示す。<br>
+        また、fig.1の新規追加、または変更を行ったモジュールの詳細をtab.2に示す。</p>
+        <center>
+          <img src="module_ard.png" title="Arduino モジュール構成図" width="1000" height="auto">
+          <p>fig.1 Arduinoモジュール構成図</p>
+          <br>
+          <p>tab.2 Arduino新規、変更モジュール</p>
+          <table class="table010">
+            <tr>
+              <th>モジュール名</th>
+              <th>概要</th>
+              <th>関数名</th>
+              <th>備考</th>
+            </tr>
+            <tr>
+              <td>slave</td>
+              <td>各種の処理の実行を行う</td>
+              <td>void slave()</td>
+              <td>引数、戻り値は共に特になし</td>
+            </tr>
+            <tr>
+              <td>motor_conveyor</td>
+              <td>コンベアを動かすためのモーターの制御を行う</td>
+              <td>void motor_conveyor_open()<br>
+                void conv_ctrl_execute()<br>
+                void conv_ctrl_set(conv_state_t conv_state)<br>
+                void conv_ctrl_get(conv_state_t *conv_state)</td>
+              <td>コンベアのステータスを引数とする</td>
+            </tr>
+          </table>
+        </center>
+    <BR>
+    <h3>3.2RaspberryPiモジュール構成</h3>
+      <p>RaspberrPiにはメイン処理用のC言語プログラムと画像認識用の
+      Pythonプログラムを実装する。それぞれのモジュール構成を以下に示す。</p>
+      <h3>3.2.1C言語モジュール構成</h3>
+        <p>C言語プログラムのモジュール構成図をfig.2に示す。<br>
+          また、fig.2のモジュールの詳細をtab.3に示す。</p>
+          <center>
+            <img src="module_C.png" title="C言語 モジュール構成図" width="1000" height="auto">
+            <p>fig.1 C言語モジュール構成図</p>
+            <br>
+            <p>tab.3 C言語新規、変更モジュール</p>
+            <table class="table010">
+              <tr>
+                <th>モジュール名</th>
+                <th>概要</th>
+                <th>関数名</th>
+                <th>備考</th>
+              </tr>
+              <tr>
+                <td>pilot_tb</td>
+                <td>テニスボール回収用の初期操作を行う</td>
+                <td>int main()</td>
+                <td>引数、戻り値は共に特になし</td>
+              </tr>
+              <tr>
+                <td>pilot_tt</td>
+                <td>卓球ボール回収用の初期操作を行う</td>
+                <td>int main()</td>
+                <td>引数、戻り値は共に特になし</td>
+              </tr>
+              <tr>
+                <td>stop</td>
+                <td>実行中の動作を停止する</td>
+                <td>int stop()</td>
+                <td>引数、戻り値は共に特になし</td>
+              </tr>
+              <tr>
+                <td>C_send</td>
+                <td>Pythonと通信を行う</td>
+                <td>void C_send(int mode)</td>
+                <td>int型の変数を引数とする</td>
+              </tr>
+              <tr>
+                <td>deg</td>
+                <td>pythonと通信を行い、最も近いボールとの角度を測定する</td>
+                <td>int deg(int *p)</td>
+                <td>int型の変数を引数とする</td>
+              </tr>
+              <tr>
+                <td>request</td>
+                <td>Arduinoへ命令を送る</td>
+                <td>void request_set_convmode(conv_state_t conv_state)<br>
+                  int request_get_convmode(conv_state_t *conv_state)</td>
+                <td>コンベアのステータスを引数、戻り値とする</td>
+              </tr>
+            </table>
+          </center>
+        <BR>
+        <h3>3.2.2Pythonモジュール構成</h3>
+          <p>Pythonプログラムのモジュール構成図をfig.3に示す。<br>
+            また、fig.3のモジュールの詳細をtab.4に示す。</p>
+            <center>
+              <img src="module_python.png" title="python モジュール構成図" width="1000" height="auto">
+              <p>fig.1 pythonモジュール構成図</p>
+              <br>
+              <p>tab.4 python新規モジュール</p>
+              <table class="table010">
+                <tr>
+                  <th>モジュール名</th>
+                  <th>概要</th>
+                  <th>関数名</th>
+                  <th>備考</th>
+                </tr>
+                <tr>
+                  <td>py_recv</td>
+                  <td>C言語と通信を行う</td>
+                  <td>py_recv()</td>
+                  <td>int型の変数を戻り値とする</td>
+                </tr>
+                <tr>
+                  <td>face</td>
+                  <td>卓球ボール回収用の初期操作を行う</td>
+                  <td>change()</td>
+                  <td>引数、戻り値は共に特になし</td>
+                </tr>
+                <tr>
+                  <td>deg</td>
+                  <td>画像認識を行い、最も近いボールとの角度を測定する</td>
+                  <td>関数なし</td>
+                  <td>引数、戻り値は共に特になし</td>
+                </tr>
+              </table>
+            </center>
+          <BR>
+
+
+
+
+
+
+
+
+
     <h2>2.1.フローチャート</h2>
     <p>フローチャートを下記に示す</p>
     <img src="MIRS.png" alt="flowchart">
     <p>Fig2. フローチャート</p>
     <h2>2.2.LCD表示案</h2>
-    <p>MIRS機体正面に設置したLCDモニターにTkinterを用いて表情や機体のステータスを表示する。表示例を以下に示す。</p>
+    <p>MIRS機体正面に設置したLCDモニターにTkinterを用いて表情を表示する。表示する表情を図、図に示す。</p>
     <!--img src="用意しようか"-->
     <p>Fig3. MIRS表情表示例</p>
     <BR>
