@@ -48,8 +48,10 @@
     <a href = "#first">1.はじめに</a><br>
     <a href = "#function">2.基本機能</a><br>
     <a href = "#module">3.モジュール構成</a><br>
-    <a href = "#">4.</a><br>
-    <a href = "#">5.各パートへのリンク</a><br>
+    <a href = "#flowchart">4.フローチャート</a><br>
+    <a href = "#display">5.LCD表示案</a><br>
+    <a href = "#app">6.アプリケーションのインターフェース案</a><br>
+    <a href = "#link">7.各パートへのリンク</a><br>
 
     <BR>
     <hr>
@@ -98,7 +100,7 @@
           <td>アプリケーション連携機能</td>
           <td>ユーザにMIRSの動作開始や停止といった最低限の制御を行わせることにより、ユーザ体験を向上させるため</td>
           <td>アプリケーション開発をする</td>
-          <td></td>
+          <td>JavaScript</td>
         </tr>
       </table>
     </center>
@@ -147,7 +149,7 @@
           また、fig.2のモジュールの詳細をtab.3に示す。</p>
           <center>
             <img src="module_C.png" title="C言語 モジュール構成図" width="1000" height="auto">
-            <p>fig.1 C言語モジュール構成図</p>
+            <p>fig.2 C言語モジュール構成図</p>
             <br>
             <p>tab.3 C言語新規、変更モジュール</p>
             <table class="table010">
@@ -202,7 +204,7 @@
             また、fig.3のモジュールの詳細をtab.4に示す。</p>
             <center>
               <img src="module_python.png" title="python モジュール構成図" width="1000" height="auto">
-              <p>fig.1 pythonモジュール構成図</p>
+              <p>fig.3 pythonモジュール構成図</p>
               <br>
               <p>tab.4 python新規モジュール</p>
               <table class="table010">
@@ -234,29 +236,40 @@
             </center>
           <BR>
 
-
-
-
-
-
-
-
-
-    <h2>2.1.フローチャート</h2>
-    <p>フローチャートを下記に示す</p>
-    <img src="MIRS.png" alt="flowchart">
-    <p>Fig2. フローチャート</p>
-    <h2>2.2.LCD表示案</h2>
-    <p>MIRS機体正面に設置したLCDモニターにTkinterを用いて表情を表示する。表示する表情を図、図に示す。</p>
-    <!--img src="用意しようか"-->
-    <p>Fig3. MIRS表情表示例</p>
+      <h2><a name=flowchart>4.フローチャート</a></h2>
+      <p>動作フローチャートをfig.4に示す</p>
+      <center>
+        <img src="motion.png" alt="flowchart">
+        <p>fig.4 フローチャート</p>
+      </center>
+      <br>
+      <h2><a name=display>5.LCD表示案</a></h2>
+      <p>MIRS機体正面に設置したLCDモニターにTkinterを用いて表情を表示する。表示する表情をfig.5、fig.6に示す。</p>
+      <center>
+          <img src="smile.png" title="smile" width="1000" height="auto">
+          <p>fig.5 MIRS表情"smile"</p>
+          <br>
+          <img src="warning.png" title="warning" width="1000" height="auto">
+          <p>fig.6 MIRS表情"warning"</p>
+      </center>
     <BR>
-    <h2>2.3.アプリケーションのインターフェース案</h2>
-    <p>iOSアプリまたはWebアプリケーションとして実装する。実装予定のUIを以下に示す。<br>また、プロトタイプを<a href="https://xd.adobe.com/view/9cf3d6c9-4a48-4d0b-952c-536f95f6ae2c-c9a0/">Adobe XD</a>にて示す。</p>
+    <h2><a name=app>6.アプリケーションのインターフェース案</a></h2>
+    <p>iOSアプリまたはWebアプリケーションとして実装する。実装予定のUIをfig.7に示す。<br>
+      また、プロトタイプを<a href="https://xd.adobe.com/view/9cf3d6c9-4a48-4d0b-952c-536f95f6ae2c-c9a0/">Adobe XD</a>にて示す。</p>
+    <center>
     <img src="prototype.png" alt="prototype">
-    <p>Fig4. UIプロトタイプ</p>
-    <hr>
+    <p>fig.7 UIプロトタイプ</p>
+  </center>
     <BR>
+
+    <h2><a name = link>7.別パートへのリンク</a></h2>
+        <a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004/mech/num0002a/index.html">MIRS2004 詳細設計書(メカニクス)</a><br>
+        <a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004/elec/num0002a/index.html">MIRS2004 詳細設計書(エレクトロニクス)</a><br>
+      <br>
+
+      <BR>
+      <hr>
+      <BR>
 
     <address>
     <a href="http://www2.denshi.numazu-ct.ac.jp/mirsdoc2/mirs2004" target="_self">MIRS2004ドキュメント管理台帳へ</a>
